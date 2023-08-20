@@ -1,0 +1,16 @@
+.input-kontejner {
+    display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-polja {
+    width: 50vh;
+}
+
+.naslov-novausluga {
+    font-family: 'Cardo', serif;
+    text-transform: uppercase;
+}

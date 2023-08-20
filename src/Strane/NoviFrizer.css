@@ -1,0 +1,16 @@
+.dodajfrizera-kontejner {
+    display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.novi-frizer-input {
+    width: 50vh;
+}
+
+.novifrizer-naslov {
+    font-family: 'Cardo', serif;
+    text-transform: uppercase;
+}

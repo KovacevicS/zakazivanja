@@ -1,67 +1,104 @@
-import Navigacija from "./Navigacija/Navigacija";
-import Pocetna from "./Strane/Pocetna";
-import Onama from "./Strane/Onama";
-import Termini from "./Strane/Termini";
-import VrsteUsluga from "./Strane/VrsteUsluga";
-import { Redirect, Route, Switch } from "react-router-dom";
-import Podacikorisnika from "./Strane/Podacikorisnika";
-import Login from "./Registrovani Korisnik/Login";
-import Fejdmakazama from "./Frizure/FejdMakazama";
-import Fejdmasinicom from "./Frizure/Fejdmasinicom";
-import Decijesisanje from "./Frizure/Decijesisanje";
-import Brijanjeglave from "./Frizure/Brijanjeglave";
-import Sredjivanjebrade from "./Frizure/Sredjivanjebrade";
+import React, { useState,  useEffect } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import NavBar from './Navigacija/NavBar';
+import Pocetna from './Strane/Pocetna';
+import Onama from './Strane/Onama';
+import Termini from './Strane/Termini';
+import VrsteUsluga from './Strane/VrsteUsluga';
+import Podacikorisnika from './Strane/Podacikorisnika';
+import Login from './RegistrovaniKorisnik/Login';
+import Registrovanikorisnik from './RegistrovaniKorisnik/Registrovanikorisnik';
+import Pauza from './RegistrovaniKorisnik/Pauze';
+import Detaljitermina from './Strane/Detaljitermina';
+import  Novausluga from './Strane/Novausluga';
+import Editusluga from './Strane/Editusluge';
+import OdabriFrizera from './Strane/OdabirFrizera';
+import Editfrizera from './Strane/Editfrizera'
+import Novifrizer from './Strane/NoviFrizer';
+import Statistika from './RegistrovaniKorisnik/Statistika';
+
+
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+  const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
+
+  if (storedUserLoggedInInformation === "1") {
+    setIsLoggedIn(true);
+  }
+}, []);
+
+  const handleLogin = () => {
+    localStorage.setItem("isLoggedIn", "1");
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    setIsLoggedIn(false);
+  };
+
   return (
     <>
-    <div> 
-    
-       <Navigacija />
-      <Switch>
-        <Route path="/PocetnaStrana" exact>
-          <Pocetna />
-        </Route>
-        <Route path="/Onama" exact>
-          <Onama />
-        </Route>
-        <Route path="/VrsteUsluga">
-          <VrsteUsluga />
-        </Route>
-        <Route path="/Zakazitermin" exact>
-          <Termini />
-        </Route>
-        <Route path="/Podacikorisnika">
-          <Podacikorisnika />
-        </Route>
-        <Route path="/Login">
-          <Login/>
-        </Route>
-
-        <Route path="/Fejdmakazama">
-          <Fejdmakazama/>
-        </Route>
-
-        <Route path="/Fejdmasinicom">
-          <Fejdmasinicom/>
-        </Route>
-        <Route path="/Decijesisanje">
-          <Decijesisanje/>
-        </Route>
-        <Route path="/Brijanjeglave">
-          <Brijanjeglave/>
-        </Route>
-
-        <Route path="/Sredjivanjebrade">
-          <Sredjivanjebrade/>
-        </Route>
-
-        <Route path="/">
-          <Redirect to="/PocetnaStrana" />
-        </Route>
-        
-      </Switch>
-      </div> 
+      <div>
+        <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+        <Switch>
+          {!isLoggedIn && (
+            <Route path="/login">
+              <Login handleLogin={handleLogin} />
+            </Route>
+          )}
+     <Route path="/loginovan">
+  {isLoggedIn && <Registrovanikorisnik/>}
+</Route>
+<Route path='/pauza'>
+  {isLoggedIn &&<Pauza/>}
+</Route>
+<Route path='/Novausluga'>
+  {isLoggedIn && < Novausluga/>}
+</Route>
+<Route path="/Editusluge">
+  {isLoggedIn && <Editusluga/>}
+</Route>
+<Route path='/Novifrizer'>
+  {isLoggedIn && <Novifrizer/>}
+</Route>
+ <Route path="/Editfrizera">
+  {isLoggedIn && <Editfrizera/>}
+          </Route> 
+     
+          <Route path="/Statistika">
+            <Statistika/>
+          </Route>
+          
+          <Route path="/PocetnaStrana" exact>
+            <Pocetna />
+          </Route>
+          <Route path="/Onama" exact>
+            <Onama />
+          </Route>
+          <Route path='/Odabrirfrizera' >
+            <OdabriFrizera isLoggedIn={isLoggedIn}/>
+          </Route>
+          <Route path="/VrsteUsluga">
+            <VrsteUsluga isLoggedIn={isLoggedIn} />
+          </Route>
+          <Route path="/Zakazitermin" exact>
+            <Termini />
+          </Route>
+          <Route path="/Podacikorisnika">
+            <Podacikorisnika />
+          </Route>
+          <Route path='/Detaljitermina'>
+            <Detaljitermina/>
+          </Route>
+          <Route path="/">
+            <Redirect to="/PocetnaStrana" />
+          </Route>
+          
+        </Switch>
+      </div>
     </>
   );
 }

@@ -1,0 +1,92 @@
+/* Pauza.module.css */
+
+.pauza-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.pauza-checkboxes {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.pauza-checkboxes div {
+  margin-right: 20px;
+}
+
+.calendar-container {
+  width: 300px; /* Prilagodite širinu kalendara prema vašem dizajnu */
+  margin-bottom: 20px;
+}
+
+.slider-container {
+  width: 300px; /* Prilagodite širinu slajdera prema vašem dizajnu */
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.slider-value {
+  margin-left: 10px;
+}
+
+.pauza-time-inputs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pauza-time-inputs label {
+  margin-right: 10px;
+}
+
+.button {
+  background-color: #007bff; /* Prilagodite boju dugmeta prema vašem dizajnu */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #0056b3; /* Prilagodite boju na hover prema vašem dizajnu */
+}
+
+/* Stilovi za Select komponentu iz biblioteke react-select */
+.Select__control {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.Select__value-container {
+  flex: 1;
+}
+
+.Select__indicator {
+  color: #007bff; /* Prilagodite boju indikatora prema vašem dizajnu */
+}
+
+.Select__indicator:hover {
+  color: #0056b3; /* Prilagodite boju indikatora na hover prema vašem dizajnu */
+}
+
+.Select__menu {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 2px;
+}
+
+.Select__option {
+  padding: 8px;
+}
+
+.Select__option:hover {
+  background-color: #f2f2f2; /* Prilagodite boju opcije na hover prema vašem dizajnu */
+}

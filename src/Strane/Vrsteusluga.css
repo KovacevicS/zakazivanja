@@ -1,32 +1,145 @@
-  .proizvod-kontejner {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .proizvod-kartica {
-    width: calc(33.33% - 10px);
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  .proizvod-kartica img {
-    width: 100%;
+.pazljivocentar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.pazljivo {
+  height: 68px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 180%;
+  /* or 34px */
+  top: 450px;
+  text-align: center;
+  align-items: center;
+  color: #FFCA42;
+  font-family: 'Cardo', serif;
+}
+
+.uslugecentar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.usluge {
+  width: 152px;
+  height: 55px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 110%;
+  letter-spacing: -0.02em;
+  color: #FFCA42;
+  font-family: 'Cardo', serif;
+}
+
+.kraj {
+  text-align: center;
+}
+
+.zakazitermin {
+  padding: 10px;
+  background-color: #ffca42;
+  border-radius: 3px;
+  font-family: "Cardo";
+  font-style: normal;
+  font-size: 17px;
+}
+
+.service-card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 30px;
+  text-align: left;
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+  border-color: #FFCA42;
+  border-style: solid;
+}
+
+.card-text {
+  max-width: 300px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.centriranje {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.slika1 {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  display: flex;
+}
+
+.pazljivo {
+  text-align: center;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.zakazitermin {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.zakazitermin:hover {
+  background-color: #0056b3;
+}
+
+.zakazitermin:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.kraj {
+  text-align: center;
+}
+
+.zakazitermin {
+  padding: 10px;
+  background-color: #ffca42;
+  border-radius: 3px;
+  font-family: "Cardo";
+  font-style: normal;
+  font-size: 17px;
+}
+
+.oznaci {
+  padding: 5px;
+  cursor: pointer;
+}
+.logged-in-button {
+  width: 50px;
+  height: 50px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .slika1 {
+    max-width: 100%;
     height: auto;
-    border-radius: 5px;
+    transform: scale(0.5, 0.5);
   }
-  
-  .proizvod-kartica h2 {
-    margin-top: 10px;
-    margin-bottom: 0;
-    font-size: 24px;
+
+  .service-card {
+    width: 100%;
   }
-  
-  .proizvod-kartica p.cena {
-    font-size: 20px;
-    color: #f00;
-    margin-top: 5px;
-  }
+}

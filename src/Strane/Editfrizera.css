@@ -1,0 +1,16 @@
+.frizer-kontejner {
+    display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.frizer-polje {
+    width: 50vh;
+}
+
+.frizer-naslov {
+    font-family: 'Cardo', serif;
+    text-transform: uppercase;
+}

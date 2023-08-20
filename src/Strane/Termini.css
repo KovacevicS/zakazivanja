@@ -1,0 +1,117 @@
+.link{
+    padding: 1px;
+    text-align: center;
+    font-size: 18px;
+    width: 200px;
+    height: 50px; 
+    background: #FFCA42;
+    font-family: 'Cardo', serif;
+    cursor: pointer;
+    
+    
+    }
+    .termin{  
+        position: absolute;
+        width: 20%;
+        text-align: center;
+        font-size: 18px;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: 'Cardo', serif;
+        font-weight: 400;
+        font-size: 21.8px;
+        line-height: 154.5%;
+        color: #FFCA42;
+    }
+    
+    .kalendar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+    }
+    .big-container {
+        display: flex;
+      justify-content: space-evenly;
+      height: 100vh;
+    }
+    .small-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        max-width: 30%;
+    }
+    .buttons-container {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 90%;
+        max-height: 90%;
+        
+    }
+    
+    .flex-item {
+        width: 25%;
+      }
+    .button-option {
+        margin: 10px;
+        border-radius: 20px;
+        padding: 3px 15px 2px 15px;
+        border: 2px #FFCA42 solid;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        transition: .5s;
+        font-size: 20px;
+        color: #FFCA42;
+    }
+    
+    .button-option:hover {
+        box-shadow: 0px 0px 10px 5px #FFCA42 ;
+        /* box-shadow: 3px 3px red, -.5em 0 .4em red; /
+        / box-shadow: rgba(240, 46, 170, 0.4) 4px 4px, rgba(240, 46, 170, 0.3) 9px 9px, rgba(240, 46, 170, 0.2) 14px 14px, rgba(240, 46, 170, 0.1) 19px 19px, rgba(240, 46, 170, 0.05) 24px 24px; */
+        cursor: pointer;
+    }
+    
+     .button-option:focus,
+    .button-option:active {
+      /* background-color: #83EEFF; */
+      background-color: #FFCA42;
+      color: black;
+    } 
+      
+    
+    .linija {
+        color: white;
+        border-radius: 2px;
+    }
+    
+    .terminitekst {
+        /* color: #FFCA42;
+        font-size: 25px;
+        font-family: 'Cardo', serif; */
+    
+        width: 152px;
+      height: 55px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 110%;
+      letter-spacing: -0.02em;
+      color: #FFCA42;
+      font-family: 'Cardo', serif;
+    }
+    
+    .terminitekst2 {
+        height: 68px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 19px;
+      line-height: 180%;
+      /* or 34px */
+      top: 450px;
+      text-align: center;
+      align-items: center;
+      color: #FFCA42;
+      font-family: 'Cardo', serif;
+    }

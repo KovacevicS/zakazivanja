@@ -1,0 +1,21 @@
+.bigcalendar {
+background-color: white;
+
+margin-top: 50px;
+height: 500px;
+
+}
+.calendar-button {
+    background-color: red; /* Crvena boja pozadine */
+    color: white; /* Bela boja teksta */
+    border: none; /* Bez ivica oko dugmeta */
+    padding: 8px 12px; /* Razmak unutar dugmeta */
+    border-radius: 4px; /* Zaobljeni uglovi */
+    cursor: pointer; /* Pokazivač pri hoveru iznad dugmeta */
+  }
+  
+  /* Promena boje teksta kada je dugme deaktivirano */
+  .calendar-button:disabled {
+    background-color: gray; /* Siva boja pozadine */
+    cursor: not-allowed; /* Zabranjeni pokazivač pri hoveru iznad dugmeta */
+  }

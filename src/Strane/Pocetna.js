@@ -1,17 +1,38 @@
-import './Pocetna.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import classes from "./Pocetna.module.css";
+import video from "../images/bickejivideo2.mp4";
 
 const Pocetna = () => {
-    return (
-        <>
-        <section className='sekcija-1'>
-            <h3 className='tekst1'>- Dobro dosao na sajt!</h3>
-            <h1 className='tekst2'>Luka Bickeji</h1>
-            <h5 className='tekst3'>Pazljivo procitajte usluge prilikom zakazivanja termina. Mozete izabrati jednu ili vise usluga.</h5>
-            <button className='dugme'>ZAKAZI TERMIN</button>
-            <img className='slika1' src='https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'  alt= 'React Image' />
-        </section>
-        </>
-    )
+  return (
+    <>
+    <div className={classes.kontejner}>
+    <video autoPlay loop muted disablePictureInPicture>
+        <source src={video} type="video/mp4" />
+      </video>
+      </div>
+      <div className={classes.container}>
+        <div className={classes.info}>
+          <h1>Dobro došli na sajt!</h1>
+          <h2>Luka Bickeji</h2>
+
+          <div className={classes.service}>
+            <h3>Usluge friziranja</h3>
+            <p>Pružamo širok spektar usluga friziranja za sve vaše potrebe.</p>
+          </div>
+          <div>
+            <h3>Usluge bojanja kose</h3>
+            <p>
+              Nudimo profesionalno bojanje kose u različitim bojama i stilovima.
+            </p>
+          </div>
+          <Link to={"/Odabrirfrizera"} className={classes.button}>
+            Zakaži termin
+          </Link>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Pocetna;
