@@ -21,7 +21,6 @@ const VrsteUsluga = ({ isLoggedIn }) => {
     async function fetchData() {
       const q = query(collection(db, "usluge"));
 
-
       const querySnapshot = await getDocs(q);
       let uslugesafirenbase = [];
       querySnapshot.forEach((doc) => {
@@ -36,13 +35,13 @@ const VrsteUsluga = ({ isLoggedIn }) => {
   }, [frizer]);
 
   const isButtonDisabled = () => {
-    return Object.values(usluge).every((item) => item === false);
+    return Object.values(usluge).every((item) => item === undefined);
   };
 
   const slanjeuslugebaziHandler = async (event) => {
     history.push("/Zakazitermin", { usluge, frizer });
     event.preventDefault();
-    if (!Object.values(usluge).some((item) => item === true)) {
+    if (!Object.values(usluge).some((item) => item !== undefined)) {
       return;
     }
   };
@@ -77,23 +76,18 @@ const VrsteUsluga = ({ isLoggedIn }) => {
   };
 
   const izabraneUslugeHandler = (event) => {
-    const { name, checked } = event.target;
+    const { name, checked, value } = event.target;
 
     if (checked) {
-      let pomObj = {};
-
-      // Check if the selected option is for haircut or shaving
-      if (name === "sisanje" || name === "brijanje") {
-        // If it's for haircut or shaving, uncheck the other option
-        const otherOption = name === "sisanje" ? "brijanje" : "sisanje";
-        document.getElementById(otherOption).checked = false;
-        pomObj[otherOption] = false;
-      }
-
-      pomObj[name] = true;
-      setUsluge({ ...usluge, ...pomObj });
+      setUsluge((prevUsluge) => ({
+        ...prevUsluge,
+        [name]: value,
+      }));
     } else {
-      setUsluge({ ...usluge, [name]: false });
+      setUsluge((prevUsluge) => ({
+        ...prevUsluge,
+        [name]: undefined,
+      }));
     }
   };
 

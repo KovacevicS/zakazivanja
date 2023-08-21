@@ -59,13 +59,15 @@ const Termini = () => {
       // doc.data() is never undefined for query doc snapshots
       //pom je npr {brijanjeGlave:false, decije:30,...}
       let pom = nasObjekat.izabraneUsluge.usluge;
-
+      console.log(pom)
       let ukupnoMinuta = 0;
       //prolazimo kroz pom objekat i racunamo koliko nam minuta traju ukupno sve usluge
       Object.keys(pom).forEach((item) => {
         if (pom[item] !== false) {
           ukupnoMinuta = ukupnoMinuta + Number(pom[item]);
+        console.log( ukupnoMinuta = ukupnoMinuta + Number(pom[item]))
         }
+        console.log(pom)
       });
       
       //u pocetak termina se nalazi inforamcija o satnici u obliku "09:15"
