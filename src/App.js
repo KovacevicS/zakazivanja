@@ -16,6 +16,7 @@ import OdabriFrizera from './Strane/OdabirFrizera';
 import Editfrizera from './Strane/Editfrizera'
 import Novifrizer from './Strane/NoviFrizer';
 import Statistika from './RegistrovaniKorisnik/Statistika';
+import RadnoVreme from './RegistrovaniKorisnik/Radnovreme';
 
 
 
@@ -67,6 +68,9 @@ function App() {
  <Route path="/Editfrizera">
   {isLoggedIn && <Editfrizera/>}
           </Route> 
+          <Route path="/Radnovreme">
+            {isLoggedIn && <RadnoVreme/>}
+          </Route>
      
           <Route path="/Statistika">
             <Statistika/>

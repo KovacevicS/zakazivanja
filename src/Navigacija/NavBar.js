@@ -33,6 +33,11 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
     Statistika
   </Link>
 )}
+{isLoggedIn && (
+  <Link to={'/Radnovreme'} className="navbar-link">
+    Radno vreme
+  </Link>
+)}
 
 {isLoggedIn && (
   <Link to={'/Odjava'} className="navbar-link" onClick={handleLogoutClick}>
