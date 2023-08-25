@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState,  } from "react";
 import "react-calendar/dist/Calendar.css";
 import { useLocation, useHistory } from "react-router-dom";
 import "./Termini.css";
 import { cloneDeep } from "lodash";
+
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { pocetneOpcije, pocetneOpcijeSubtom } from "./Pocetneopcije"; 
 import MyCalendar from "./Kalendar";
@@ -18,10 +19,6 @@ const Termini = () => {
   const [datum, setDatum] = useState(new Date());
   const [naseOpcije, setNaseOpcije] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {}
-    fetchData();
-  }, []);
 
   const slanjeterminabazi = async (event) => {
     history.push("./Podacikorisnika", { pocetakTermina, datum, usluge, frizer });
@@ -117,8 +114,7 @@ const Termini = () => {
     setNaseOpcije(nasNiz.filter((opcija) => opcija.slobodan === true));
   }
 
-console.log(pocetakTermina)
-console.log(datum)
+
 return (
   <>
     <div className="big-container">

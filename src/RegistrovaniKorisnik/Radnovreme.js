@@ -5,9 +5,22 @@ import { getDocs, collection, query, where, doc ,updateDoc } from "firebase/fire
 
 const RadnoVreme = () => {
     const [frizer, setFrizer] = useState("");
-    const [pocetakRadnogVremena, setPocetakRadnogVremena] = useState("");
-    const [krajRadnogVremena, setKrajRadnogVremena] = useState("");
+    const [pocetak, setPocetak] = useState("");
+    const [kraj, setKraj] = useState("");
     const [frizeriList, setFrizeriList] = useState([]);
+
+    const generateTimeOptions = (startHour, endHour, step) => {
+      const options = [];
+      for (let hour = startHour; hour <= endHour; hour++) {
+        for (let minute = 0; minute < 60; minute += step) {
+          options.push(`${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`);
+        }
+      }
+      return options;
+    };
+  
+    const timeOptionsPocetak = generateTimeOptions(9, 17, 15);
+    const timeOptionsKraj = generateTimeOptions(12, 18, 15);
 
   useEffect(() => {
     async function fetchFrizeri() {
@@ -23,28 +36,11 @@ const RadnoVreme = () => {
     fetchFrizeri();
   }, []);
 
-  const handleFrizerChange = (event) => {
-    setFrizer(event.target.value);
-    // Resetirajte vremena kad se promijeni frizer
-    setPocetakRadnogVremena("");
-    setKrajRadnogVremena("");
-  };
+ 
 
-  const handlePocetakRadnogVremenaChange = (event) => {
-    setPocetakRadnogVremena(event.target.value);
-  };
-
-  const handleKrajRadnogVremenaChange = (event) => {
-    setKrajRadnogVremena(event.target.value);
-  };
 
   const handleSpremiRadnoVreme = async () => {
     try {
-      if (!frizer || !pocetakRadnogVremena || !krajRadnogVremena) {
-        console.log("Molimo popunite sve podatke");
-        return;
-      }
-
       // Ovdje dobavljate dokument frizera iz baze prema odabranom imenu frizera
       const frizerQuerySnapshot = await getDocs(
         query(collection(db, "frizeri"), where("frizer.ime", "==", frizer))
@@ -59,18 +55,27 @@ const RadnoVreme = () => {
 
       // Ovdje ažurirate dokument frizera s novim vremenima radnog vremena
       await updateDoc(doc(db, "frizeri", frizerId), {
-        "frizer.pocetakRadnogVremena": pocetakRadnogVremena,
-        "frizer.krajRadnogVremena": krajRadnogVremena,
+        "frizer.pocetakRadnogVremena": pocetak,
+        "frizer.krajRadnogVremena": kraj,
       });
 
       console.log("Radno vreme uspješno ažurirano");
 
       // Resetiranje polja nakon ažuriranja
-      setPocetakRadnogVremena("");
-      setKrajRadnogVremena("");
+      setPocetak("");
+      setKraj("");
     } catch (error) {
       console.error("Greška prilikom ažuriranja radnog vremena:", error);
     }
+  };
+  const pocetakHandler = (event) => {
+    setPocetak(event.target.value);
+  };
+  const krajHandler = (event) => {
+    setKraj(event.target.value);
+  };
+  const handleFrizerChange = (event) => {
+    setFrizer(event.target.value);
   };
 
   return (
@@ -83,7 +88,6 @@ const RadnoVreme = () => {
   label="Frizer"
   onChange={handleFrizerChange}
 >
- 
   {frizeriList.map((frizerItem) => (
     <MenuItem key={frizerItem} value={frizerItem}>
       {frizerItem}
@@ -92,24 +96,34 @@ const RadnoVreme = () => {
 </Select>
       {frizer ? (
         <div>
-          <Select
-            labelId="pocetak-label"
-            id="pocetak-select"
-            value={pocetakRadnogVremena}
-            label="Početak radnog vremena"
-            onChange={handlePocetakRadnogVremenaChange}
-          >
-            {/* Ovdje mapirate opcije za početak radnog vremena */}
-          </Select>
-          <Select
-            labelId="kraj-label"
-            id="kraj-select"
-            value={krajRadnogVremena}
-            label="Kraj radnog vremena"
-            onChange={handleKrajRadnogVremenaChange}
-          >
-            {/* Ovdje mapirate opcije za kraj radnog vremena */}
-          </Select>
+         <Select
+          value={pocetak}
+          onChange={pocetakHandler}
+          label="Pocetak radnog vremena"
+          variant="outlined"
+          className="novi-frizer-input"
+        >
+          {timeOptionsPocetak.map((time) => (
+            <MenuItem key={time} value={time}
+            label="Pocetak radnog vremena">
+              {time}
+            </MenuItem>
+          ))}
+        </Select>
+        <Select
+          value={kraj}
+          onChange={krajHandler}
+          label="Kraj radnog vremena"
+          variant="outlined"
+          className="novi-frizer-input"
+        >
+          {timeOptionsKraj.map((time) => (
+            <MenuItem key={time} value={time}
+            label="Kraj radnog vremena">
+              {time}
+            </MenuItem>
+          ))}
+        </Select>
           <Button variant="contained" onClick={handleSpremiRadnoVreme}>
             Spremi radno vreme
           </Button>
